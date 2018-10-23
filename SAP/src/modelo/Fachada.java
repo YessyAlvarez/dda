@@ -29,8 +29,8 @@ public class Fachada extends Observable{
         su.agregar(u);
     }
 
-    public Usuario login(String nom, String c) {
-        return su.login(nom, c);
+    public Usuario login(int cedula, String pass) {
+        return su.login(cedula, pass);
     }
 
     public void logout(Usuario u) {

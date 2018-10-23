@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import java.util.Observer;
 import modelo.Fachada;
 import modelo.Usuario;
 
@@ -12,18 +13,23 @@ import modelo.Usuario;
  *
  * @author Jessi
  */
-public class Controlador_Login {
+public class Controlador_Login{
     
+    private Usuario logueado;
     private Fachada modelo = Fachada.getInstancia();
     private Interface_Login vista;
 
-    public Controlador_Login(Interface_Login vista) {
+    public Controlador_Login(Usuario logueado, Interface_Login vista) {
         this.vista = vista;
+        this.logueado = logueado;
     }
     
     
-    public void login(String nom,String pass){
-        Usuario logueado = modelo.login(nom, pass);
+    
+    
+    
+    public void login(int cedula,String pass){
+        Usuario logueado = modelo.login(cedula, pass);
         if(logueado==null){
             vista.mostrarErrorLogin();
         }else{

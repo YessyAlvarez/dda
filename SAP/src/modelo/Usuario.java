@@ -11,22 +11,22 @@ package modelo;
  */
 public class Usuario {
     
-    private String nombre;
+    private int cedula;
     private String password;
     private String nombreCompleto;
 
-    public Usuario(String nombre, String password, String nombreCompleto) {
-        this.nombre = nombre;
+    public Usuario(int cedula, String password, String nombreCompleto) {
+        this.cedula = cedula;
         this.password = password;
         this.nombreCompleto = nombreCompleto;
     }
 
-    public String getNombre() {
-        return nombre;
+    public int getCedula() {
+        return cedula;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setCedula(int cedula) {
+        this.cedula = cedula;
     }
 
     public String getPassword() {
@@ -44,13 +44,16 @@ public class Usuario {
     public void setNombreCompleto(String nombreCompleto) {
         this.nombreCompleto = nombreCompleto;
     }
+    @Override
     public String toString(){
         return getNombreCompleto();
     }
-    /*public boolean equals(Object o){
-        Usuario u = (Usuario)o;
-        return getNombre().equals(u.getNombre());
-    }*/
-     
+    
+    @Override
+    public boolean equals(Object o){
+        Usuario u = (Usuario) o;
+        return getCedula() == u.getCedula();
+    }
+    
     
 }

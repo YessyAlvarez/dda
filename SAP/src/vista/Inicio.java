@@ -25,11 +25,11 @@ public class Inicio {
 
     private static void cargarUsuarios() {
         Fachada f = Fachada.getInstancia();
-        f.agregar(new Usuario("a","a","Juan perez"));
-        f.agregar(new Usuario("b","b","Ana Gonzalez"));
-        f.agregar(new Usuario("c","c","Pedro Hernandez"));
-        f.agregar(new Usuario("d","d","Pepe Trueno"));
-        f.agregar(new Usuario("e","e","Juan Carlos"));
+        f.agregar(new Usuario(1,"1","Juan perez"));
+        f.agregar(new Usuario(2,"2","Ana Gonzalez"));
+        f.agregar(new Usuario(3,"3","Pedro Hernandez"));
+        f.agregar(new Usuario(4,"4","Pepe Trueno"));
+        f.agregar(new Usuario(5,"5","Juan Carlos"));
     }
     
 }

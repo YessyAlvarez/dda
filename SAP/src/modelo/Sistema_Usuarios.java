@@ -7,10 +7,7 @@ package modelo;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Jessi
- */
+
 public class Sistema_Usuarios {
     
     private ArrayList<Usuario> usuarios = new ArrayList();
@@ -19,9 +16,9 @@ public class Sistema_Usuarios {
     public void agregar(Usuario u){
         usuarios.add(u);
     }
-    public Usuario login(String nom,String c){
+    public Usuario login(int cedula,String c){
         for(Usuario u:usuarios){
-            if(u.getNombre().equals(nom) && u.getPassword().equals(c)){
+            if(u.getCedula()==cedula && u.getPassword().equals(c)){
                 logueados.add(u);
                 Fachada.getInstancia().avisar(Fachada.EVENTO_USUARIO);
                 return u;

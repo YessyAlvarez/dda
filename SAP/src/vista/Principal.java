@@ -5,6 +5,9 @@
  */
 package vista;
 
+
+import modelo.Fachada;
+import modelo.Usuario;
 /**
  *
  * @author Jessi
@@ -27,24 +30,45 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton_Trabajadores = new javax.swing.JButton();
+        jButton_Clientes = new javax.swing.JButton();
+        jButton_Monitores = new javax.swing.JButton();
+        jButton_Salir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton_Login = new javax.swing.JButton();
-
-        jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(240, 215, 201));
 
-        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 24)); // NOI18N
-        jLabel2.setText("Bienvenidos!");
-
-        jButton_Login.setFont(new java.awt.Font("Open Sans", 1, 14)); // NOI18N
-        jButton_Login.setText("Login");
-        jButton_Login.addActionListener(new java.awt.event.ActionListener() {
+        jButton_Trabajadores.setText("Trabajador");
+        jButton_Trabajadores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_LoginActionPerformed(evt);
+                jButton_TrabajadoresActionPerformed(evt);
             }
         });
+
+        jButton_Clientes.setText("Cliente");
+        jButton_Clientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ClientesActionPerformed(evt);
+            }
+        });
+
+        jButton_Monitores.setText("Monitores");
+        jButton_Monitores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_MonitoresActionPerformed(evt);
+            }
+        });
+
+        jButton_Salir.setText("Salir");
+        jButton_Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_SalirActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Sistema de Atención al Público");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -53,29 +77,57 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(jLabel2))
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton_Monitores, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton_Trabajadores, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton_Clientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(153, 153, 153)
-                        .addComponent(jButton_Login)))
-                .addContainerGap(130, Short.MAX_VALUE))
+                        .addGap(72, 72, 72)
+                        .addComponent(jLabel1)))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel2)
-                .addGap(38, 38, 38)
-                .addComponent(jButton_Login)
-                .addContainerGap(177, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addComponent(jLabel1)
+                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton_Trabajadores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton_Clientes, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton_Monitores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton_Salir, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton_LoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_LoginActionPerformed
-        new Login(null,false).setVisible(true);
-    }//GEN-LAST:event_jButton_LoginActionPerformed
+    private void jButton_TrabajadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_TrabajadoresActionPerformed
+        //new Trabajador_1_Login(this, rootPaneCheckingEnabled).setVisible(true);
+        new Trabajador_0_Principal().setVisible(true);
+    }//GEN-LAST:event_jButton_TrabajadoresActionPerformed
+
+    private void jButton_SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SalirActionPerformed
+        //Cerrar la aplicacion
+        System.exit(0);
+    }//GEN-LAST:event_jButton_SalirActionPerformed
+
+    private void jButton_MonitoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_MonitoresActionPerformed
+        //Muestro la ventana de inicio de monitores
+        new Monitor_0_Inicio(this, false).setVisible(true);
+    }//GEN-LAST:event_jButton_MonitoresActionPerformed
+
+    private void jButton_ClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ClientesActionPerformed
+        //Muestro la ventana Inicio del Area para Clientes
+        new Cliente_0_InicioArea(this, false).setVisible(true);
+    }//GEN-LAST:event_jButton_ClientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,8 +165,10 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton_Login;
+    private javax.swing.JButton jButton_Clientes;
+    private javax.swing.JButton jButton_Monitores;
+    private javax.swing.JButton jButton_Salir;
+    private javax.swing.JButton jButton_Trabajadores;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
