@@ -1,0 +1,33 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package modelo;
+
+import java.util.List;
+
+
+public class Sector {
+    
+    private final String nombre;
+    private final int[] puestos;
+
+    public Sector(String nombre, int[] puestos) {
+        this.nombre = nombre;
+        this.puestos = puestos;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int[] getPuestos() {
+        return puestos;
+    }
+    
+    
+    
+    
+    
+}
