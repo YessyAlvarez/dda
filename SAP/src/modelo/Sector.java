@@ -11,9 +11,9 @@ import java.util.List;
 public class Sector {
     
     private final String nombre;
-    private final List<Integer> puestos;
+    private final int[] puestos;
 
-    public Sector(String nombre, List<Integer> puestos) {
+    public Sector(String nombre, int[] puestos) {
         this.nombre = nombre;
         this.puestos = puestos;
     }
@@ -22,7 +22,7 @@ public class Sector {
         return nombre;
     }
 
-    public List<Integer> getPuestos() {
+    public int[] getPuestos() {
         return puestos;
     }
     

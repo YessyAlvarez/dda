@@ -5,14 +5,14 @@
  */
 package controlador;
 
-import modelo.Usuario;
+import modelo.Trabajador;
 
 public interface Interface_Login {
     
         
     public void mostrarErrorLogin();
 
-    public void ingresar(Usuario logueado);
+    public void ingresar(Trabajador logueado);
     
     
 }

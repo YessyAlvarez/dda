@@ -8,17 +8,20 @@ package vista;
 import controlador.Controlador_Login;
 import controlador.Interface_Login;
 import javax.swing.JOptionPane;
+import modelo.Trabajador;
 import modelo.Usuario;
-
 
 
 public class Trabajador_1_Login extends javax.swing.JDialog implements Interface_Login{
 
+    public Trabajador user;
+    
+    
     private Controlador_Login controlador;
     public Trabajador_1_Login(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        //controlador = new Controlador_Login(this);
+        controlador = new Controlador_Login(this);
         //controlador=new Controlador_Login(logueado,this);
     }
 
@@ -40,7 +43,7 @@ public class Trabajador_1_Login extends javax.swing.JDialog implements Interface
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel.setFont(new java.awt.Font("Montserrat ExtraBold", 0, 36)); // NOI18N
+        jLabel.setFont(new java.awt.Font("Montserrat ExtraBold", 0, 24)); // NOI18N
         jLabel.setForeground(new java.awt.Color(0, 153, 102));
         jLabel.setText("Login de Usuarios");
 
@@ -69,18 +72,21 @@ public class Trabajador_1_Login extends javax.swing.JDialog implements Interface
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jLabel2)
-                        .addGap(31, 31, 31)
-                        .addComponent(jTextField_password, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(62, 62, 62)
+                        .addComponent(jLabel1)
+                        .addGap(28, 28, 28)
+                        .addComponent(jTextField_usuario))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(28, 28, 28)
-                                .addComponent(jTextField_usuario))
-                            .addComponent(jLabel))))
+                                .addGap(45, 45, 45)
+                                .addComponent(jLabel2)
+                                .addGap(31, 31, 31)
+                                .addComponent(jTextField_password, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(118, 118, 118)
+                                .addComponent(jLabel)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap(59, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -90,15 +96,12 @@ public class Trabajador_1_Login extends javax.swing.JDialog implements Interface
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(127, 127, 127)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextField_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jLabel)))
+                .addGap(65, 65, 65)
+                .addComponent(jLabel)
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -175,13 +178,14 @@ public class Trabajador_1_Login extends javax.swing.JDialog implements Interface
         JOptionPane.showMessageDialog(this,"Login incorrecto");
     }
 
-    @Override
-    public void ingresar(Usuario logueado) {
+    public void ingresar(Trabajador logueado) {
         //new ListaUsuarios(null, false,logueado).setVisible(true);
         //Muestro la centana de Inicio de Jornada del Trabajador
-        new Trabajador_2_InicioJornada(null, true).setVisible(true);
+        new Trabajador_2_InicioJornada(logueado, null, true).setVisible(true);
         //Cierro ventana de login
         dispose();
         
     }
+
+
 }

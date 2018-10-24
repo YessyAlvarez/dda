@@ -5,17 +5,43 @@
  */
 package vista;
 
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import modelo.Sector;
+import modelo.Trabajador;
 
 public class Trabajador_2_InicioJornada extends javax.swing.JDialog {
 
-    /**
-     * Creates new form Trabajador_2_InicioJornada
-     */
-    public Trabajador_2_InicioJornada(java.awt.Frame parent, boolean modal) {
+    
+    private static Trabajador user;
+    private static Sector sector;
+    
+    
+    public Trabajador_2_InicioJornada(Trabajador logueado, java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.user = logueado;
+        this.sector = logueado.getSector();
+        //Precargo los datos en esta ventana
+        CargarDatos();
     }
 
+    
+    private void CargarDatos(){
+        jLabel_NombreTrabajador.setText(user.getNombreCompleto());
+        jLabel_Sector_Trabajador.setText(user.getSector().getNombre());
+        jLabel_Area_Trabajador.setText(user.getArea().getNombre());
+        //Cargo el combo de puestos libres
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        int[] puestos = sector.getPuestos();
+        for(int puesto:puestos){
+            model.addElement(puesto);
+        }
+        jComboBox_PuestosLibresParaTrabajador.setModel(model);
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,6 +58,8 @@ public class Trabajador_2_InicioJornada extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jComboBox_PuestosLibresParaTrabajador = new javax.swing.JComboBox<>();
         jButton_ElegirPuesto = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel_Area_Trabajador = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -50,34 +78,37 @@ public class Trabajador_2_InicioJornada extends javax.swing.JDialog {
             }
         });
 
+        jLabel4.setText("Area");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jComboBox_PuestosLibresParaTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 51, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(37, 37, 37)
-                                .addComponent(jLabel_Sector_Trabajador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel_NombreTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                            .addComponent(jComboBox_PuestosLibresParaTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel_Area_Trabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 36, Short.MAX_VALUE))
+                    .addComponent(jLabel_Sector_Trabajador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(104, 104, 104))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton_ElegirPuesto)
                 .addGap(47, 47, 47))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel_NombreTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,7 +117,11 @@ public class Trabajador_2_InicioJornada extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel_NombreTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(72, 72, 72)
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel_Area_Trabajador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel_Sector_Trabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -103,6 +138,9 @@ public class Trabajador_2_InicioJornada extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_ElegirPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ElegirPuestoActionPerformed
+        //Obtengo todos los datos
+        int puestoSeleccionado = Integer.parseInt(jComboBox_PuestosLibresParaTrabajador.getSelectedItem().toString());
+        //Le asigno el puesto al trabajador
         //Muestro la ventana Monitoreo del Trabajador
         new Trabajador_3_MonitorEspera(null, false).setVisible(true);
         dispose();
@@ -141,7 +179,7 @@ public class Trabajador_2_InicioJornada extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Trabajador_2_InicioJornada dialog = new Trabajador_2_InicioJornada(new javax.swing.JFrame(), true);
+                Trabajador_2_InicioJornada dialog = new Trabajador_2_InicioJornada(user, null, true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -159,6 +197,8 @@ public class Trabajador_2_InicioJornada extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel_Area_Trabajador;
     private javax.swing.JLabel jLabel_NombreTrabajador;
     private javax.swing.JLabel jLabel_Sector_Trabajador;
     // End of variables declaration//GEN-END:variables

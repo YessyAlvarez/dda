@@ -6,6 +6,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 
 
@@ -25,19 +26,19 @@ public class Fachada extends Observable{
     private Fachada() {
     }
 
-    public void agregar(Usuario u) {
+    public void agregar(Trabajador u) {
         su.agregar(u);
     }
 
-    public Usuario login(int cedula, String pass) {
+    public Trabajador login(int cedula, String pass) {
         return su.login(cedula, pass);
     }
 
-    public void logout(Usuario u) {
+    public void logout(Trabajador u) {
         su.logout(u);
     }
 
-    public ArrayList<Usuario> getLogueados() {
+    public ArrayList<Trabajador> getLogueados() {
         return su.getLogueados();
     }
     protected void avisar(Object evento){
@@ -45,4 +46,22 @@ public class Fachada extends Observable{
         notifyObservers(evento);
     }
     
+    
+    public void agregarArea(String nombreArea, List<Sector> sectores) {
+        su.agregarArea(nombreArea, sectores);
+    }
+    
+    public void agregarSector(String nombreSector, int[] puestos) {
+        su.agregarSector(nombreSector, puestos);
+    }
+    
+    
+    
+    public Sector obtenerSector(String nombre){
+        return su.ObtenerSector(nombre);
+    }
+    
+    public Area obtenerArea(String nombre){
+        return su.ObtenerArea(nombre);
+    }
 }
