@@ -11,9 +11,7 @@ package vista;
  */
 public class Trabajador_5_FinAtencion extends javax.swing.JDialog {
 
-    /**
-     * Creates new form Trabajador_4_FinAtencion
-     */
+    
     public Trabajador_5_FinAtencion(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -123,7 +121,7 @@ public class Trabajador_5_FinAtencion extends javax.swing.JDialog {
     private void jButton_finAtencionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_finAtencionActionPerformed
         //Proceso la información y cierro esta ventana.
         //Debo actualizar la ventana del Trabajador_3_MonitorEspera
-        new Trabajador_3_MonitorEspera(null, false).setVisible(true);
+        new Trabajador_5_FinAtencion(null, false).setVisible(true);
     }//GEN-LAST:event_jButton_finAtencionActionPerformed
 
     /**

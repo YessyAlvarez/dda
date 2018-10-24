@@ -5,22 +5,43 @@
  */
 package vista;
 
+import modelo.Trabajador;
+
 /**
  *
  * @author Jessi
  */
 public class Trabajador_3_MonitorEspera extends javax.swing.JDialog {
 
-    /**
-     * Creates new form Trabajador_2_MonitorEspera
-     */
-    public Trabajador_3_MonitorEspera(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    private static Trabajador trabajador;
+    
+    
+
+    Trabajador_3_MonitorEspera(Trabajador logueado, Object object, boolean b) {
         initComponents();
+        this.trabajador = logueado;
         //Apago el panel de nuevo cliente. Solo se activara cuando el sistema le asigne uno
         jPanel_newClient.setVisible(true);
+        //Cargo los valores iniciales de esta ventana
+        cargarValoresIniciales();
     }
 
+    
+    private void cargarValoresIniciales(){
+        jLabel_NombreTrabajador.setText(trabajador.getNombreCompleto());
+        jLabel_puesto.setText(""+trabajador.getPuesto());
+        jLabel_area.setText(trabajador.getArea().getNombre());
+        jLabel_sector.setText(trabajador.getSector().getNombre());
+        jLabel_cant_asignados.setText("0");
+        jLabel_cantidad_derivada.setText("0");
+    }
+    
+    
+    
+    
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,6 +58,16 @@ public class Trabajador_3_MonitorEspera extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel_newClient = new javax.swing.JLabel();
         jButton_ir = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel_puesto = new javax.swing.JLabel();
+        jLabel_area = new javax.swing.JLabel();
+        jLabel_sector = new javax.swing.JLabel();
+        jLabel_cant_asignados = new javax.swing.JLabel();
+        jLabel_cantidad_derivada = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -83,6 +114,26 @@ public class Trabajador_3_MonitorEspera extends javax.swing.JDialog {
                 .addGap(26, 26, 26))
         );
 
+        jLabel4.setText("Puesto");
+
+        jLabel5.setText("Area");
+
+        jLabel6.setText("Sector");
+
+        jLabel7.setText("Cantidad numeros asignados");
+
+        jLabel8.setText("Cantidad numeros derivados en espera");
+
+        jLabel_puesto.setText("   ");
+
+        jLabel_area.setText("   ");
+
+        jLabel_sector.setText("   ");
+
+        jLabel_cant_asignados.setText("   ");
+
+        jLabel_cantidad_derivada.setText("   ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -100,8 +151,32 @@ public class Trabajador_3_MonitorEspera extends javax.swing.JDialog {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(jPanel_newClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(32, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel6))
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel_puesto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel_area, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel_sector, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPanel_newClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel_cant_asignados, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel_cantidad_derivada, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,7 +187,27 @@ public class Trabajador_3_MonitorEspera extends javax.swing.JDialog {
                     .addComponent(jLabel_NombreTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel_puesto))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel_area))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel_sector))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel_cant_asignados))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel_cantidad_derivada))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addComponent(jPanel_newClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
@@ -156,7 +251,7 @@ public class Trabajador_3_MonitorEspera extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Trabajador_3_MonitorEspera dialog = new Trabajador_3_MonitorEspera(new javax.swing.JFrame(), true);
+                Trabajador_3_MonitorEspera dialog = new Trabajador_3_MonitorEspera(trabajador, new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -173,8 +268,18 @@ public class Trabajador_3_MonitorEspera extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel_NombreTrabajador;
+    private javax.swing.JLabel jLabel_area;
+    private javax.swing.JLabel jLabel_cant_asignados;
+    private javax.swing.JLabel jLabel_cantidad_derivada;
     private javax.swing.JLabel jLabel_newClient;
+    private javax.swing.JLabel jLabel_puesto;
+    private javax.swing.JLabel jLabel_sector;
     private javax.swing.JPanel jPanel_newClient;
     // End of variables declaration//GEN-END:variables
 }

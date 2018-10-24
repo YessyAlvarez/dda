@@ -141,7 +141,9 @@ public class Trabajador_2_InicioJornada extends javax.swing.JDialog implements I
         //Obtengo todos los datos
         int puestoSeleccionado = Integer.parseInt(jComboBox_PuestosLibresParaTrabajador.getSelectedItem().toString());
         //Le asigno el puesto al trabajador
-        controlador.asignarPuestoATrabajador(user.getCedula(), puestoSeleccionado);
+        user.setPuesto(puestoSeleccionado);
+        //controlador.asignarPuestoATrabajador(user.getCedula(), puestoSeleccionado);
+        verMonitorEspera(user);
     }//GEN-LAST:event_jButton_ElegirPuestoActionPerformed
 
     /**
@@ -203,7 +205,7 @@ public class Trabajador_2_InicioJornada extends javax.swing.JDialog implements I
 
     @Override
     public void verMonitorEspera(Trabajador trabajador) {
-        new Trabajador_2_InicioJornada(trabajador, null, true).setVisible(true);
+        new Trabajador_3_MonitorEspera(trabajador, null, true).setVisible(true);
         //Cierro esta ventana de Inicio de Jornada de autoasignacion de puesto
         dispose();
     }
