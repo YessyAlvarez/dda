@@ -66,12 +66,11 @@ public class Fachada extends Observable{
     
     public void asignarPuestoATrabajador(int cedula, int puesto){
         su.asignarPuestoATrabajador(cedula, puesto);
-        
-        
-        
     }
     
-    
+    public Trabajador getTrabajadorPorCI(int cedula){
+        return su.getTrabajadorPorCI(cedula);
+    }
     
     
 }

@@ -7,13 +7,11 @@ package controlador;
 
 import modelo.Trabajador;
 
-public interface Interface_Login {
+
+public interface Interface_Trabajador_2_InicioJornada {
     
-        
-    public void mostrarErrorLogin();
-
-    public void ingresar(Trabajador logueado);
-
+    
+    public void verMonitorEspera(Trabajador trabajador);
     
     
 }

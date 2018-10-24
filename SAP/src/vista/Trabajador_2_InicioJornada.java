@@ -6,11 +6,12 @@
 package vista;
 
 import controlador.Controlador_Trabajador_2_InicioJornada;
+import controlador.Interface_Trabajador_2_InicioJornada;
 import javax.swing.DefaultComboBoxModel;
 import modelo.Sector;
 import modelo.Trabajador;
 
-public class Trabajador_2_InicioJornada extends javax.swing.JDialog {
+public class Trabajador_2_InicioJornada extends javax.swing.JDialog implements Interface_Trabajador_2_InicioJornada{
 
     
     private static Trabajador user;
@@ -141,9 +142,6 @@ public class Trabajador_2_InicioJornada extends javax.swing.JDialog {
         int puestoSeleccionado = Integer.parseInt(jComboBox_PuestosLibresParaTrabajador.getSelectedItem().toString());
         //Le asigno el puesto al trabajador
         controlador.asignarPuestoATrabajador(user.getCedula(), puestoSeleccionado);
-        //Muestro la ventana Monitoreo del Trabajador
-        new Trabajador_3_MonitorEspera(null, true).setVisible(true);
-        dispose();
     }//GEN-LAST:event_jButton_ElegirPuestoActionPerformed
 
     /**
@@ -202,4 +200,11 @@ public class Trabajador_2_InicioJornada extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel_NombreTrabajador;
     private javax.swing.JLabel jLabel_Sector_Trabajador;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void verMonitorEspera(Trabajador trabajador) {
+        new Trabajador_2_InicioJornada(trabajador, null, true).setVisible(true);
+        //Cierro esta ventana de Inicio de Jornada de autoasignacion de puesto
+        dispose();
+    }
 }
