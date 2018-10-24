@@ -5,9 +5,8 @@
  */
 package vista;
 
-import javax.swing.ComboBoxModel;
+import controlador.Controlador_Trabajador_2_InicioJornada;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 import modelo.Sector;
 import modelo.Trabajador;
 
@@ -16,7 +15,7 @@ public class Trabajador_2_InicioJornada extends javax.swing.JDialog {
     
     private static Trabajador user;
     private static Sector sector;
-    
+    private Controlador_Trabajador_2_InicioJornada controlador;
     
     public Trabajador_2_InicioJornada(Trabajador logueado, java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -114,7 +113,7 @@ public class Trabajador_2_InicioJornada extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel_NombreTrabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
@@ -122,9 +121,9 @@ public class Trabajador_2_InicioJornada extends javax.swing.JDialog {
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel_Area_Trabajador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel_Sector_Trabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_Sector_Trabajador, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -141,8 +140,9 @@ public class Trabajador_2_InicioJornada extends javax.swing.JDialog {
         //Obtengo todos los datos
         int puestoSeleccionado = Integer.parseInt(jComboBox_PuestosLibresParaTrabajador.getSelectedItem().toString());
         //Le asigno el puesto al trabajador
+        controlador.asignarPuestoATrabajador(puestoSeleccionado);
         //Muestro la ventana Monitoreo del Trabajador
-        new Trabajador_3_MonitorEspera(null, false).setVisible(true);
+        new Trabajador_3_MonitorEspera(null, true).setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton_ElegirPuestoActionPerformed
 
