@@ -5,6 +5,8 @@
  */
 package modelo;
 
+import java.util.List;
+
 /**
  *
  * @author Jessi
@@ -15,6 +17,8 @@ public class Trabajador extends Usuario{
     private Sector sector;
     private Area area;
     private boolean libre;
+    private List<Atencion> atencionesRealizadas;
+    private Atencion atencionEnCurso;
 
     public Trabajador(int cedula, String password, String nombreCompleto, Sector sector, Area area) {
         super(cedula, password, nombreCompleto);
@@ -53,6 +57,22 @@ public class Trabajador extends Usuario{
 
     public void setLibre(boolean libre) {
         this.libre = libre;
+    }
+
+    public List<Atencion> getAtencionesRealizadas() {
+        return atencionesRealizadas;
+    }
+
+    public void setAtencionesRealizadas(List<Atencion> atencionesRealizadas) {
+        this.atencionesRealizadas = atencionesRealizadas;
+    }
+
+    public Atencion getAtencionEnCurso() {
+        return atencionEnCurso;
+    }
+
+    public void setAtencionEnCurso(Atencion atencionEnCurso) {
+        this.atencionEnCurso = atencionEnCurso;
     }
     
     

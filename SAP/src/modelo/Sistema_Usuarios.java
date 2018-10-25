@@ -16,7 +16,8 @@ public class Sistema_Usuarios {
     private ArrayList<Trabajador> trabajadores = new ArrayList();
     private ArrayList<Area> areas = new ArrayList();
     private ArrayList<Sector> sectores = new ArrayList();
-    
+    private ArrayList<Atencion> monitorDeAtencionesRealizadas = new ArrayList();
+    private ArrayList<Atencion> AlertasEnEspera = new ArrayList();
     
      public void agregarTrabajdor(Trabajador u){
         trabajadores.add(u);
@@ -39,7 +40,6 @@ public class Sistema_Usuarios {
         return null;
     }
     
-    
     public void logout(Trabajador u){
         logueados.remove(u);
         Fachada.getInstancia().avisar(Fachada.EVENTO_USUARIO);
@@ -48,7 +48,6 @@ public class Sistema_Usuarios {
     public ArrayList<Trabajador> getLogueados() {
         return logueados;
     }
-    
     
     public Trabajador getTrabajadorPorCI(int cedula){
         int indice = 0;
@@ -73,7 +72,6 @@ public class Sistema_Usuarios {
         sectores.add(new Sector(nombreSector, puestos));
     }
     
-    
     public Sector ObtenerSector(String nombre){
         Sector sector = null;
         int indice = 0;
@@ -91,9 +89,7 @@ public class Sistema_Usuarios {
         }
         return sector;
     }
-    
-    
-    
+        
     public Area ObtenerArea(String nombre){
         Area area = null;
         int indice = 0;
