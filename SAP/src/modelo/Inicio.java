@@ -7,9 +7,6 @@ package modelo;
 
 import java.util.ArrayList;
 import java.util.List;
-import modelo.Fachada;
-import modelo.Sector;
-import modelo.Trabajador;
 import vista.Principal;
 
 /**
@@ -25,6 +22,7 @@ public class Inicio {
         // TODO code application logic here
         cargarSectores();
         cargarAreas();
+        cargarTrabajadores();
         cargarUsuarios();
         new Principal().setVisible(true);
     }
@@ -60,7 +58,7 @@ public class Inicio {
         f.agregarArea("Area C", sectoresC);
     }
 
-    private static void cargarUsuarios() {
+    private static void cargarTrabajadores() {
         Fachada f = Fachada.getInstancia();
         f.agregarTrabajador(new Trabajador(1,"1","Juan perez", f.obtenerSector("Sector AA"), f.obtenerArea("Area A")));
         f.agregarTrabajador(new Trabajador(2,"2","Ana Gonzalez", f.obtenerSector("Sector AB"), f.obtenerArea("Area A")));
@@ -70,5 +68,26 @@ public class Inicio {
         f.agregarTrabajador(new Trabajador(5,"5","Juan Carlos", f.obtenerSector("Sector CB"), f.obtenerArea("Area C")));
     }
 
+    
+    private static void cargarUsuarios(){
+        Fachada f = Fachada.getInstancia();
+        f.agregarCliente(new Cliente(11, "11", "Claudio Claucu", 11, "clau@gmail.com"));
+        f.agregarCliente(new Cliente(12, "12", "Nil Martin Caballero", 12, "Nil@gmail.com"));
+        f.agregarCliente(new Cliente(13, "13", "Sergio Jimenez Rojas", 13, "Rojas@gmail.com"));
+        f.agregarCliente(new Cliente(14, "14", "Alicia Marquez Gallego", 14, "Alicia@gmail.com"));
+        f.agregarCliente(new Cliente(15, "15", "Sergio Mora", 15, "Mora@gmail.com"));
+        f.agregarCliente(new Cliente(16, "16", "Manuela Romero", 16, "Manuela@gmail.com"));
+        f.agregarCliente(new Cliente(17, "17", "Omar Peña", 17, "Omar@gmail.com"));
+        f.agregarCliente(new Cliente(18, "18", "Leyre Gomez Molina", 18, "Leyre@gmail.com"));
+        f.agregarCliente(new Cliente(19, "19", "Andrea Ortiz", 19, "Ortiz@gmail.com"));
+        f.agregarCliente(new Cliente(20, "20", "Aitor Calvo Castillo", 20, "Castillo@gmail.com"));
+        f.agregarCliente(new Cliente(21, "21", "Enrique Vidal Carmona", 21, "Vidal@gmail.com"));
+        f.agregarCliente(new Cliente(22, "22", "Alicia Marin", 22, "Alicia@gmail.com"));
+        f.agregarCliente(new Cliente(23, "23", "Álvaro Sola Iglesias", 23, "Sola@gmail.com"));
+        f.agregarCliente(new Cliente(24, "24", "Érik Gimenez Diez", 24, "Gimenez@gmail.com"));
+    }
+    
+    
+    
     
 }

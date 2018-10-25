@@ -17,6 +17,7 @@ public class Sistema_Usuarios {
     private ArrayList<Area> areas = new ArrayList();
     private ArrayList<Sector> sectores = new ArrayList();
     
+    
      public void agregarTrabajdor(Trabajador u){
         trabajadores.add(u);
     }

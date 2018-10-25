@@ -30,6 +30,11 @@ public class Fachada extends Observable{
         su.agregarTrabajdor(u);
     }
 
+    
+    public void agregarCliente(Cliente c) {
+        su.agregarCliente(c);
+    }
+    
     public Trabajador login(int cedula, String pass) {
         return su.login(cedula, pass);
     }
