@@ -26,8 +26,8 @@ public class Fachada extends Observable{
     private Fachada() {
     }
 
-    public void agregar(Trabajador u) {
-        su.agregar(u);
+    public void agregarTrabajador(Trabajador u) {
+        su.agregarTrabajdor(u);
     }
 
     public Trabajador login(int cedula, String pass) {

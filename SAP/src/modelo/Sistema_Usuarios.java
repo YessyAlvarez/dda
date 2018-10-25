@@ -11,19 +11,23 @@ import java.util.List;
 
 public class Sistema_Usuarios {
     
-    //private ArrayList<Usuario> usuarios = new ArrayList();
+    private ArrayList<Cliente> clientes = new ArrayList();
     private ArrayList<Trabajador> logueados = new ArrayList();
+    private ArrayList<Trabajador> trabajadores = new ArrayList();
     private ArrayList<Area> areas = new ArrayList();
     private ArrayList<Sector> sectores = new ArrayList();
     
-    public void agregar(Trabajador u){
-        logueados.add(u);
+     public void agregarTrabajdor(Trabajador u){
+        trabajadores.add(u);
+    }
+     
+    public void agregarCliente(Cliente u){
+        clientes.add(u);
     }
     
-    
-    public Trabajador login(int cedula, String c){
-        if(!logueados.isEmpty()){
-            for(Trabajador u:logueados){
+  public Trabajador login(int cedula, String c){
+        if(!trabajadores.isEmpty()){
+            for(Trabajador u:trabajadores){
                 if(u.getCedula()==cedula && u.getPassword().equals(c)){
                     logueados.add(u);
                     Fachada.getInstancia().avisar(Fachada.EVENTO_USUARIO);
@@ -43,6 +47,7 @@ public class Sistema_Usuarios {
     public ArrayList<Trabajador> getLogueados() {
         return logueados;
     }
+    
     
     public Trabajador getTrabajadorPorCI(int cedula){
         int indice = 0;

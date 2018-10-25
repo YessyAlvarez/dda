@@ -62,12 +62,12 @@ public class Inicio {
 
     private static void cargarUsuarios() {
         Fachada f = Fachada.getInstancia();
-        f.agregar(new Trabajador(1,"1","Juan perez", f.obtenerSector("Sector AA"), f.obtenerArea("Area A")));
-        f.agregar(new Trabajador(2,"2","Ana Gonzalez", f.obtenerSector("Sector AB"), f.obtenerArea("Area A")));
-        f.agregar(new Trabajador(3,"3","Pedro Hernandez", f.obtenerSector("Sector AC"), f.obtenerArea("Area A")));
-        f.agregar(new Trabajador(4,"4","Pepe Trueno", f.obtenerSector("Sector BA"), f.obtenerArea("Area B")));
-        f.agregar(new Trabajador(5,"5","Juan Carlos", f.obtenerSector("Sector CA"), f.obtenerArea("Area C")));
-        f.agregar(new Trabajador(5,"5","Juan Carlos", f.obtenerSector("Sector CB"), f.obtenerArea("Area C")));
+        f.agregarTrabajador(new Trabajador(1,"1","Juan perez", f.obtenerSector("Sector AA"), f.obtenerArea("Area A")));
+        f.agregarTrabajador(new Trabajador(2,"2","Ana Gonzalez", f.obtenerSector("Sector AB"), f.obtenerArea("Area A")));
+        f.agregarTrabajador(new Trabajador(3,"3","Pedro Hernandez", f.obtenerSector("Sector AC"), f.obtenerArea("Area A")));
+        f.agregarTrabajador(new Trabajador(4,"4","Pepe Trueno", f.obtenerSector("Sector BA"), f.obtenerArea("Area B")));
+        f.agregarTrabajador(new Trabajador(5,"5","Juan Carlos", f.obtenerSector("Sector CA"), f.obtenerArea("Area C")));
+        f.agregarTrabajador(new Trabajador(5,"5","Juan Carlos", f.obtenerSector("Sector CB"), f.obtenerArea("Area C")));
     }
 
     
