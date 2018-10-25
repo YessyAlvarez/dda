@@ -23,7 +23,7 @@ public class Inicio {
         cargarSectores();
         cargarAreas();
         cargarTrabajadores();
-        cargarUsuarios();
+        cargarClientes();
         new Principal().setVisible(true);
     }
     
@@ -69,7 +69,7 @@ public class Inicio {
     }
 
     
-    private static void cargarUsuarios(){
+    private static void cargarClientes(){
         Fachada f = Fachada.getInstancia();
         f.agregarCliente(new Cliente(11, "11", "Claudio Claucu", 11, "clau@gmail.com"));
         f.agregarCliente(new Cliente(12, "12", "Nil Martin Caballero", 12, "Nil@gmail.com"));

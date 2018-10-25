@@ -5,20 +5,42 @@
  */
 package vista;
 
-/**
- *
- * @author Jessi
- */
-public class Cliente_2_Ticket extends javax.swing.JDialog {
+import controlador.Controlador_Cliente_2_Ticket;
+import controlador.Interface_Cliente_2_Ticket;
+import modelo.Atencion;
 
-    /**
-     * Creates new form Cliente_2_Ticket
-     */
+
+public class Cliente_2_Ticket extends javax.swing.JDialog implements Interface_Cliente_2_Ticket{
+
+    
+    private static Atencion atencion;
+    private Controlador_Cliente_2_Ticket controlador;
+      
+    
     public Cliente_2_Ticket(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        controlador = new Controlador_Cliente_2_Ticket(this);
     }
+    
+    
+     public Cliente_2_Ticket(int nroAtencion, java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
+        initComponents();
+        controlador = new Controlador_Cliente_2_Ticket(this);
+        atencion = controlador.getAtencion(nroAtencion);
+        //Cargo los datos
+        CargarDatos();
+    }
+     
 
+    private void CargarDatos(){
+        jLabel_NumeroAtencion.setText(atencion.getNumeroAtencion()+"");
+        jLabel_NombreCliente.setText(atencion.getCliente().getNombreCompleto());
+        jLabel_FechaHora.setText(atencion.getFechaHoraSolicitado().toString());
+        jLabel_Sector.setText(atencion.getSector());
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,17 +50,89 @@ public class Cliente_2_Ticket extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel_NumeroAtencion = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel_NombreCliente = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel_FechaHora = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel_Sector = new javax.swing.JLabel();
+        jButton_cerrar = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jLabel1.setText("No. Atencion");
+
+        jLabel2.setText("Nombre completo");
+
+        jLabel3.setText("Fecha y hora");
+
+        jLabel4.setText("Sector");
+
+        jButton_cerrar.setText("Cerrar");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setText("Ticket");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel_Sector, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel_FechaHora, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel_NombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel_NumeroAtencion, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(160, 160, 160)
+                        .addComponent(jButton_cerrar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(163, 163, 163)
+                        .addComponent(jLabel5)))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_NumeroAtencion, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_NombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_FechaHora, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel_Sector, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(27, 27, 27)
+                .addComponent(jButton_cerrar)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
@@ -70,6 +164,9 @@ public class Cliente_2_Ticket extends javax.swing.JDialog {
             java.util.logging.Logger.getLogger(Cliente_2_Ticket.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -87,5 +184,15 @@ public class Cliente_2_Ticket extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton_cerrar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel_FechaHora;
+    private javax.swing.JLabel jLabel_NombreCliente;
+    private javax.swing.JLabel jLabel_NumeroAtencion;
+    private javax.swing.JLabel jLabel_Sector;
     // End of variables declaration//GEN-END:variables
 }

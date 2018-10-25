@@ -9,7 +9,6 @@ import controlador.Controlador_Login;
 import controlador.Interface_Login;
 import javax.swing.JOptionPane;
 import modelo.Trabajador;
-import modelo.Usuario;
 
 
 public class Trabajador_1_Login extends javax.swing.JDialog implements Interface_Login{

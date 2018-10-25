@@ -5,19 +5,47 @@
  */
 package vista;
 
-/**
- *
- * @author Jessi
- */
-public class Cliente_1_SolicitoNumero extends javax.swing.JDialog {
+import controlador.Controlador_Cliente_1_SolicitoNumero;
+import controlador.Interface_Cliente_1_SolicitoNumero;
+import java.util.Date;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import modelo.Area;
+import modelo.Sector;
 
-    /**
-     * Creates new form Cliente_1_SolicitoNumero
-     */
+
+public class Cliente_1_SolicitoNumero extends javax.swing.JDialog implements Interface_Cliente_1_SolicitoNumero{
+    
+    private static Area area;
+    
+    
+    private Controlador_Cliente_1_SolicitoNumero controlador;
+      
+      
     public Cliente_1_SolicitoNumero(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        controlador = new Controlador_Cliente_1_SolicitoNumero(this);
+        CargarDatos();
     }
+    
+    
+    public Cliente_1_SolicitoNumero(String nombreArea, java.awt.Frame parent, boolean modal) {
+        controlador = new Controlador_Cliente_1_SolicitoNumero(this);
+        initComponents();
+        area = controlador.getArea(nombreArea);
+        CargarDatos();
+    }
+    
+    private void CargarDatos(){
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        List<Sector> sectores = controlador.getSectores(area.getNombre());
+        for(Sector s:sectores){
+            model.addElement(s.getNombre());
+        }
+        jComboBox_Sector.setModel(model);
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -94,10 +122,18 @@ public class Cliente_1_SolicitoNumero extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_ImprimirTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ImprimirTicketActionPerformed
+
+        int nroCliente = Integer.parseInt(jTextField_nroCliente.getText());
+        String sectorSeleccionado = jComboBox_Sector.getSelectedItem().toString();
+        int nroAtencion = controlador.registrarAtencion(nroCliente, sectorSeleccionado, area.getNombre(), new Date());
+        
         //Nunca cierro la ventana actual pero si muestro la impresion del ticket
-        new Cliente_2_Ticket(null, false).setVisible(true);
-        //Limpio el campo del lciente actual
+        new Cliente_2_Ticket(nroAtencion, null, false).setVisible(true);
+        //Limpio el campo del ciente actual
         jTextField_nroCliente.setText("");
+        
+        
+        //verTicket();
     }//GEN-LAST:event_jButton_ImprimirTicketActionPerformed
 
     /**

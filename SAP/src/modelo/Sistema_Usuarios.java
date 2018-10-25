@@ -6,6 +6,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -18,6 +19,9 @@ public class Sistema_Usuarios {
     private ArrayList<Sector> sectores = new ArrayList();
     private ArrayList<Atencion> monitorDeAtencionesRealizadas = new ArrayList();
     private ArrayList<Atencion> AlertasEnEspera = new ArrayList();
+    
+    private int numeroAtencion = 1;
+    
     
      public void agregarTrabajdor(Trabajador u){
         trabajadores.add(u);
@@ -109,6 +113,79 @@ public class Sistema_Usuarios {
     
     public void asignarPuestoATrabajador(int cedula, int puesto){
         getTrabajadorPorCI(cedula).setPuesto(puesto);
+    }
+    
+    
+    public ArrayList<Area> getAreas() {
+        return areas;
+    }
+    
+    
+    
+    public List<Sector> getSectores(String nombreArea){
+        //Obtengo el area y retorno los sectores de esa area
+        return ObtenerArea(nombreArea).getSectores();        
+    }
+    
+    
+    public int registrarAtencion(int nroCliente, String sectorSeleccionado, String nombreArea, Date fechaHoraSolicitud){
+        Cliente cliente = getClienteNumeroCliente(nroCliente);
+        Atencion atencion = new Atencion(numeroAtencion, cliente);
+        atencion.setSector(sectorSeleccionado);
+        atencion.setArea(nombreArea);
+        atencion.setFechaHoraSolicitado(fechaHoraSolicitud);
+        if(!AsignarATrabajadorLibre(atencion)){
+            AlertasEnEspera.add(atencion);
+        }
+        
+        numeroAtencion++;
+        
+        return atencion.getNumeroAtencion();
+    }
+    
+    
+    public Cliente getClienteNumeroCliente(int nroCliente){
+        int indice = 0;
+        int cantidad = clientes.size();
+        if(!clientes.isEmpty()){
+            while(indice<cantidad){
+                Cliente aux = clientes.get(indice);
+                if(aux.getNroCliente()==nroCliente){
+                    return aux;
+                }
+                indice++;
+            }
+        }
+        return null;
+    }
+    
+    public boolean AsignarATrabajadorLibre(Atencion atencion){
+        for(Trabajador t:logueados){
+            if(t.getArea().equals(atencion.getArea()) && t.getSector().equals(atencion.getSector())){
+                if(t.isLibre()){
+                    t.setAtencionEnCurso(atencion);
+                    ////aca tengo que notificar la ventana del trabajador
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    
+    public Atencion getAtencion(int nroAtencion){
+        int indice = 0;
+        int cantidad = AlertasEnEspera.size();
+        if(!AlertasEnEspera.isEmpty()){
+            while(indice<cantidad){
+                Atencion aux = AlertasEnEspera.get(indice);
+                if(aux.getNumeroAtencion()==nroAtencion){
+                    return aux;
+                }
+                indice++;
+            }
+        }
+        return null;
     }
     
 }

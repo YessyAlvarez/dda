@@ -6,6 +6,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Observable;
 
@@ -75,6 +76,26 @@ public class Fachada extends Observable{
     
     public Trabajador getTrabajadorPorCI(int cedula){
         return su.getTrabajadorPorCI(cedula);
+    }
+    
+    public ArrayList<Area> getAreas(){
+        return su.getAreas();
+    }
+    
+    public List<Sector> getSectores(String nombreArea){
+        return su.getSectores(nombreArea);
+    }
+    
+    public Area getArea(String nombreArea){
+        return su.ObtenerArea(nombreArea);
+    }
+    
+    public int registrarAtencion(int nroCliente, String sectorSeleccionado, String nombreArea, Date fechaHoraSolicitud){
+        return su.registrarAtencion(nroCliente, sectorSeleccionado, nombreArea, fechaHoraSolicitud);
+    }
+    
+    public Atencion getAtencion(int nroAtencion){
+        return su.getAtencion(nroAtencion);
     }
     
     

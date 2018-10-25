@@ -5,20 +5,46 @@
  */
 package vista;
 
+import controlador.Controlador_Cliente_0_InicioArea;
+import controlador.Interface_Cliente_0_InicioArea;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import modelo.Area;
+
 /**
  *
  * @author Jessi
  */
-public class Cliente_0_InicioArea extends javax.swing.JDialog {
+public class Cliente_0_InicioArea extends javax.swing.JDialog implements Interface_Cliente_0_InicioArea{
 
-    /**
-     * Creates new form Cliente_0_InicioArea
-     */
+    private Controlador_Cliente_0_InicioArea controlador;
+
     public Cliente_0_InicioArea(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        controlador = new Controlador_Cliente_0_InicioArea(this);
+        //Cargo las areas en el combo
+        CargarDatos();
+    } //this = (vista.Cliente_0_InicioArea)
+/*
+    public Cliente_0_InicioArea() {
+        initComponents();
+        //Cargo las areas en el combo
+        
+        controlador = new Controldor_Cliente_0_InicioArea(this);
+        
+        CargarDatos();
     }
-
+  */  
+    
+     private void CargarDatos(){
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        List<Area> areas = controlador.getAreas();
+        for(Area area:areas){
+            model.addElement(area.getNombre());
+        }
+        jComboBox_Areas.setModel(model);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,7 +55,7 @@ public class Cliente_0_InicioArea extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox_Areas = new javax.swing.JComboBox<>();
         jButton_SeleccionarArea = new javax.swing.JButton();
         jButton_Cerrar = new javax.swing.JButton();
 
@@ -38,7 +64,7 @@ public class Cliente_0_InicioArea extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Area");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox_Areas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton_SeleccionarArea.setText("Seleccionar");
         jButton_SeleccionarArea.addActionListener(new java.awt.event.ActionListener() {
@@ -62,7 +88,7 @@ public class Cliente_0_InicioArea extends javax.swing.JDialog {
                 .addContainerGap(128, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox_Areas, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(113, 113, 113))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -82,7 +108,7 @@ public class Cliente_0_InicioArea extends javax.swing.JDialog {
                 .addGap(82, 82, 82)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBox_Areas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jButton_SeleccionarArea)
                 .addGap(18, 18, 18)
@@ -94,9 +120,12 @@ public class Cliente_0_InicioArea extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton_SeleccionarAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_SeleccionarAreaActionPerformed
-        //Muestro la ventana para solicitud de numero de los clientes
-        new Cliente_1_SolicitoNumero(null, false).setVisible(true);
-        dispose();
+        /*Muestro la ventana para solicitud de numero de los clientes
+        new Cliente_1_SolicitoNumero(null, false).setVisible(true);*/
+        //Obtengo el area
+        String areaSeleccionada = jComboBox_Areas.getSelectedItem().toString();
+        //Obtengo el sector dentro del area
+        verSolicitarNumero(areaSeleccionada);
     }//GEN-LAST:event_jButton_SeleccionarAreaActionPerformed
 
     private void jButton_CerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_CerrarActionPerformed
@@ -104,6 +133,7 @@ public class Cliente_0_InicioArea extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_jButton_CerrarActionPerformed
 
+   
     /**
      * @param args the command line arguments
      */
@@ -145,11 +175,18 @@ public class Cliente_0_InicioArea extends javax.swing.JDialog {
             }
         });
     }
+    
+    
+    public void verSolicitarNumero(String nombreArea) {
+        new Cliente_1_SolicitoNumero(nombreArea, null, true).setVisible(true);
+        //Cierro esta ventana de Inicio de Jornada de autoasignacion de puesto
+        dispose();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_Cerrar;
     private javax.swing.JButton jButton_SeleccionarArea;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox_Areas;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

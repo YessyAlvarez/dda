@@ -8,11 +8,6 @@ package modelo;
 import java.util.Date;
 
 
-
-/**
- *
- * @author Jessi
- */
 public class Atencion {
     private int  numeroAtencion;
     private Cliente cliente;
@@ -23,7 +18,7 @@ public class Atencion {
     private long inicioAtencion;
     private long finAtencion;
 
-    public Atencion(int numeroAtencion, Cliente cliente,Date fechaHoraSolicitado) {
+    public Atencion(int numeroAtencion, Cliente cliente) {
         this.numeroAtencion = numeroAtencion;
         this.cliente = cliente;
         this.fechaHoraSolicitado = new Date();
@@ -84,6 +79,14 @@ public class Atencion {
 
     public void setFinAtencion(long finAtencion) {
         this.finAtencion = finAtencion;
+    }
+
+    public Date getFechaHoraSolicitado() {
+        return fechaHoraSolicitado;
+    }
+
+    public void setFechaHoraSolicitado(Date fechaHoraSolicitado) {
+        this.fechaHoraSolicitado = fechaHoraSolicitado;
     }
 
     
